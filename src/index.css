@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* Force Official Attendance Slip to always have solid white background and black text on all devices and themes */
+#printable-employee-slip,
+#printable-employee-slip table,
+#printable-employee-slip tbody,
+#printable-employee-slip thead,
+#printable-employee-slip tr,
+#printable-employee-slip td,
+#printable-employee-slip th {
+  background-color: #ffffff;
+  color: #000000 !important;
+}
+
+#printable-employee-slip thead tr,
+#printable-employee-slip thead th {
+  background-color: #f3f4f6 !important;
+  color: #000000 !important;
+}
+
+#printable-employee-slip tr.is-friday,
+#printable-employee-slip tr.is-friday td {
+  background-color: #f9fafb !important;
+  color: #000000 !important;
+}
+
+#printable-employee-slip tr.is-holiday,
+#printable-employee-slip tr.is-holiday td {
+  background-color: #eef2ff !important;
+  color: #000000 !important;
+}
+
+#printable-employee-slip tfoot tr,
+#printable-employee-slip tfoot td {
+  background-color: #f3f4f6 !important;
+  color: #000000 !important;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 6mm 8mm;
+}
+
+@media print {
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Completely hide all background elements: main dashboard, tables of all employees, headers, footers, navigation */
+  main,
+  #root > div > main,
+  #root > div > header,
+  #root > div > footer,
+  header,
+  footer,
+  nav,
+  button,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Reset modal overlays and fix clipping so print fits 100% */
+  .fixed.inset-0 {
+    position: static !important;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+    max-height: none !important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .fixed.inset-0 > div {
+    position: static !important;
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .fixed.inset-0 > div > div:not(.no-print) {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  #printable-employee-slip {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    font-size: 8.5pt !important;
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  #printable-employee-slip table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+    background-color: #ffffff !important;
+    margin: 0 !important;
+    page-break-inside: auto !important;
+  }
+
+  #printable-employee-slip tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  #printable-employee-slip th,
+  #printable-employee-slip td {
+    border: 1px solid #000000 !important;
+    color: #000000 !important;
+    padding: 1.5px 3px !important;
+    line-height: 1.15 !important;
+    font-size: 7.2pt !important;
+  }
+
+  #printable-employee-slip thead th {
+    background-color: #f3f4f6 !important;
+    font-size: 7.5pt !important;
+    padding: 2.5px 3px !important;
+  }
+
+  #printable-employee-slip tfoot td {
+    background-color: #f3f4f6 !important;
+    font-size: 7.5pt !important;
+    padding: 2px 3px !important;
+  }
+
+  #printable-employee-slip tr.is-friday,
+  #printable-employee-slip tr.is-friday td {
+    background-color: #f9fafb !important;
+  }
+
+  #printable-employee-slip tr.is-holiday,
+  #printable-employee-slip tr.is-holiday td {
+    background-color: #eef2ff !important;
+  }
+
+  #printable-employee-slip .border {
+    border-color: #000000 !important;
+  }
+
+  #printable-employee-slip .mt-2 {
+    margin-top: 3px !important;
+  }
+
+  #printable-employee-slip .mb-2 {
+    margin-bottom: 3px !important;
+  }
+
+  #printable-employee-slip .p-2,
+  #printable-employee-slip .p-2\.5,
+  #printable-employee-slip .p-3 {
+    padding: 2.5px 5px !important;
+  }
+
+  #printable-employee-slip .pb-2 {
+    padding-bottom: 2px !important;
+  }
+
+  #printable-employee-slip .text-sm {
+    font-size: 8pt !important;
+  }
+
+  #printable-employee-slip .text-xs {
+    font-size: 7.2pt !important;
+  }
+
+  #printable-employee-slip .text-\[10px\],
+  #printable-employee-slip .text-\[11px\] {
+    font-size: 6.5pt !important;
+  }
+
+  /* Strictly remove any signatures or sign-offs across all print layouts */
+  .signature-section,
+  [data-signature],
+  .print-signatures {
+    display: none !important;
+  }
+}
